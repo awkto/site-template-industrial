@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TENROX | Infrastructure Consulting</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto Condensed', Arial, sans-serif;
+            background: #2a2a2a;
+            color: #e0e0e0;
+            line-height: 1.6;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, transparent 98%, rgba(255,165,0,0.1) 98%),
+                linear-gradient(180deg, transparent 98%, rgba(255,165,0,0.1) 98%);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        header {
+            background: #1a1a1a;
+            border-bottom: 4px solid #ff9800;
+            padding: 20px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+        h1 {
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: #ff9800;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 5px;
+        }
+        nav a {
+            display: block;
+            padding: 12px 24px;
+            background: #3a3a3a;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 2px solid #555;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+        }
+        nav a:hover {
+            background: #ff9800;
+            color: #000;
+            border-color: #ff9800;
+        }
+        .hero {
+            background: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 100%);
+            padding: 100px 20px;
+            margin: 40px 0;
+            border: 3px solid #555;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: repeating-linear-gradient(90deg, #ff9800 0px, #ff9800 20px, transparent 20px, transparent 40px);
+        }
+        .hero h2 {
+            font-size: 64px;
+            font-weight: 900;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+        }
+        .hero p {
+            font-size: 20px;
+            color: #bbb;
+            max-width: 800px;
+            margin-bottom: 30px;
+        }
+        .hero-button {
+            display: inline-block;
+            padding: 18px 45px;
+            background: #ff9800;
+            color: #000;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 18px;
+            text-transform: uppercase;
+            border: 3px solid #ff9800;
+            box-shadow: 0 4px 10px rgba(255,152,0,0.4);
+            transition: all 0.3s;
+            letter-spacing: 2px;
+        }
+        .hero-button:hover {
+            background: transparent;
+            color: #ff9800;
+            box-shadow: 0 6px 15px rgba(255,152,0,0.6);
+        }
+        .services {
+            padding: 80px 0;
+        }
+        .section-title {
+            font-size: 48px;
+            font-weight: 900;
+            color: #ff9800;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+            padding-left: 30px;
+            border-left: 8px solid #ff9800;
+            letter-spacing: 2px;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: #1a1a1a;
+            border: 3px solid #444;
+            padding: 35px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+            transition: all 0.3s;
+            position: relative;
+        }
+        .service-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #ff9800, transparent);
+        }
+        .service-card:hover {
+            border-color: #ff9800;
+            transform: translateX(10px);
+            box-shadow: 8px 8px 20px rgba(255,152,0,0.3);
+        }
+        .service-card h3 {
+            font-size: 28px;
+            font-weight: 900;
+            color: #ff9800;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .service-card p {
+            color: #bbb;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .service-card ul {
+            list-style: none;
+        }
+        .service-card li {
+            color: #ccc;
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            border-bottom: 1px solid #333;
+            font-weight: 600;
+        }
+        .service-card li:last-child {
+            border-bottom: none;
+        }
+        .service-card li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #ff9800;
+            font-size: 18px;
+        }
+        .cta {
+            background: #1a1a1a;
+            padding: 80px 20px;
+            margin: 60px 0;
+            border: 4px solid #ff9800;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255,152,0,0.3);
+        }
+        .cta h2 {
+            font-size: 52px;
+            font-weight: 900;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+        .cta p {
+            font-size: 20px;
+            color: #bbb;
+            margin-bottom: 35px;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 20px 50px;
+            background: #ff9800;
+            color: #000;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 20px;
+            text-transform: uppercase;
+            border: 3px solid #ff9800;
+            box-shadow: 0 4px 15px rgba(255,152,0,0.5);
+            transition: all 0.3s;
+            letter-spacing: 2px;
+        }
+        .cta-button:hover {
+            background: transparent;
+            color: #ff9800;
+        }
+        footer {
+            background: #1a1a1a;
+            border-top: 4px solid #ff9800;
+            padding: 30px 20px;
+            text-align: center;
+            color: #888;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 32px; }
+            .hero h2 { font-size: 42px; }
+            .services-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>TENROX</h1>
+                <nav>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Industrial Grade Infrastructure</h2>
+            <p>Built tough for modern demands. Expert consulting in SDLC, containerization, cloud migration, security hardening, self-hosted deployments, and robust system integration.</p>
+            <a href="#contact" class="hero-button">Build With Us</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>SDLC</h3>
+                    <p>Industrial-strength development lifecycle management with proven automation frameworks.</p>
+                    <ul>
+                        <li>CI/CD Pipeline Engineering</li>
+                        <li>DevOps Transformation</li>
+                        <li>Automated Testing Systems</li>
+                        <li>Release Automation</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Containerization</h3>
+                    <p>Heavy-duty containerization with Docker and Kubernetes orchestration platforms.</p>
+                    <ul>
+                        <li>Docker Deployment</li>
+                        <li>Kubernetes Infrastructure</li>
+                        <li>Container Registries</li>
+                        <li>Microservices Design</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Cloud Migration</h3>
+                    <p>Mission-critical cloud migrations with zero downtime guarantees.</p>
+                    <ul>
+                        <li>AWS / Azure / GCP</li>
+                        <li>Hybrid Cloud Architecture</li>
+                        <li>Migration Planning</li>
+                        <li>Performance Optimization</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Security</h3>
+                    <p>Fortress-level security implementation and compliance enforcement.</p>
+                    <ul>
+                        <li>Security Hardening</li>
+                        <li>Penetration Testing</li>
+                        <li>Compliance Standards</li>
+                        <li>Threat Detection</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Self-Hosted</h3>
+                    <p>Bulletproof on-premise infrastructure with complete operational control.</p>
+                    <ul>
+                        <li>Private Cloud Build</li>
+                        <li>Server Architecture</li>
+                        <li>Network Infrastructure</li>
+                        <li>Disaster Recovery</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Integration</h3>
+                    <p>Seamless system connectivity and automated workflow engineering.</p>
+                    <ul>
+                        <li>API Engineering</li>
+                        <li>System Integration</li>
+                        <li>Automation Pipelines</li>
+                        <li>Data Processing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="cta">
+        <div class="container">
+            <h2>Build Something Solid</h2>
+            <p>Heavy-duty infrastructure for serious operations</p>
+            <a href="mailto:contact@baseten.com" class="cta-button">Start Project</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            &copy; 2024 TENROX | Infrastructure Consulting
+        </div>
+    </footer>
+</body>
+</html>
